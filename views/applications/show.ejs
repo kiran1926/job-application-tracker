@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View your application</title>
+</head>
+
+<body>
+    <%- include("../partials/_navbar") %>
+        <h1>
+            <%= application.title %> at <%= application.company %>
+        </h1>
+        <% if (application.notes) { %>
+            <p>Notes: <%=application.notes%></p>
+        <% } %>
+        <% if (application.postingLink) { %>
+            <a href="<%= application.postingLink %>" target="_blank">View job posting</a>
+        <% } %>
+        <p>Current Status: <%= application.status %></p>
+
+        <!-- edit the appli -->
+
+        <a href="/users/<%= user._id %>/applications/<%= application._id %>/edit">Edit this application</a>
+
+        <!-- delete application -->
+         <form action="/users/<%= user._id %>/applications/<%= application._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete this application</button>
+         </form>
+
+</body>
+
+</html>

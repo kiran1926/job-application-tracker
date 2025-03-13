@@ -13,8 +13,11 @@
     <a href="/users/<%= user._id %>/applications/new">Add a new application</a>
     <ul>
       <% applications.forEach(application => { %>
-        <li>
+        <li> 
+          <!-- embedded resource routing -->
+          <a href="/users/<%= user._id%>/applications/<%= application._id %>"> 
           <%= application.title %> at <%= application.company %>
+        </a>
         </li>
        
       <% }) %>
